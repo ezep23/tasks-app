@@ -1,6 +1,4 @@
-import './style.css';
+import './src/app.css';
 import { initApp } from './src/app';
-import { todos } from './src/store/todos';
 
-todos.initStore();
-initApp('#container');
+initApp( '#container' );
