@@ -1,5 +1,15 @@
 <script setup>
-  import Title from '../Title.vue';
+    import { ref, defineEmits } from 'vue';
+    import Title from './Title.vue';
+
+    const emits = defineEmits(['changeViewTasks']);
+  
+    const handleView = (state) => {
+        emits('sendViewOption', selectedView.value)
+    }
+
+    let selectedView = ref('')
+
 </script>
 
 <template>
@@ -7,8 +17,8 @@
         <Title />
         <nav>
             <ul>
-                <li><a href="#">Tareas</a></li>
-                <li><a href="#">Completados</a></li>
+                <li><a href="#" @click="handleView('pending')">Tareas</a></li>
+                <li><a href="#" @click="handleView('completeds')">Completados</a></li>
             </ul>
         </nav>
     </aside>
