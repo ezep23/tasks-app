@@ -1,26 +1,32 @@
-<script setup>
-  import { ref, defineEmits } from 'vue';
-
-  import Navbar from './components/Navbar.vue';
-
-  let selectedView = ref('pending');
-
-  const changeViewTasks = (view) => {
-    selectedView.value = view;
-  }
-
-</script>
-
-// recibimos la info de la opción del Navbar
-// hay que mandarlo al div del tasks, hay que ver como
-
 <template>
-  <Navbar @sendViewOption="changeViewTasks" />
-  <div>
-    <Tasks is:="selectedView === 'pending' ? 'pendings' : 'completeds'" />
-  </div>
+
+  <nav>
+    <router-link to="/">
+      <h1>Tasks APP</h1>
+    </router-link>
+    <div class="nav-links">
+      <router-link to="/tasks">Tasks</router-link>
+      <router-link to="/completed">Completed</router-link>
+    </div>
+  </nav>
+
+  <router-view />
+
 </template>
 
 <style scoped>
-  
+
+  nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0486f8;
+  }
+
+  .nav-links{
+    gap: 80px;
+    display: flex;
+  }
+
 </style>
