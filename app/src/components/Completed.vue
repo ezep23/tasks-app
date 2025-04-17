@@ -2,18 +2,17 @@
     import { useTasksStore } from '../store/tasks.js';
 
     const store = useTasksStore();
-    let tasks = store.$state.tasks;
+    let tasks = store.$state.completed;
 </script>
 
 <template>
-    <h2>All tasks</h2>
+    <h2>All completed tasks</h2>
     <div v-for="task in tasks" :key="task.id" class="task">
         <p>{{ task.id }} - {{ task.title }}</p>
         <span>{{ task.description }}</span>
         <div class="buttons">
-            <button @click="store.addTask(task.id)">Complete</button>
-            <button @click="store.editTask(task.id)">Edit</button>
-            <button @click="store.deleteTask(task.id)">Edit</button>
+            <button @click="store.uncompleteTask(task.id)">Send to tasks</button>
+            <button @click="store.removeCompletedTask(task.id)">Delete</button>
         </div>
     </div>
 </template>
